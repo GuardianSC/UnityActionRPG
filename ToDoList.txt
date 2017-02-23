@@ -1,0 +1,12 @@
+﻿*NOT IN ORDER*
+1. Main Menu
+	- Play button that sends to character select screen (eventually, right now just go straight to game)
+	- Exit button that, well, exits the game (or something like that)
+
+2. Class Select Screen
+	 - 
+
+3. Enemies
+	- Number of enemies spawned is random, as is position and state (besides chase)
+	- Look state(enemy stays in place, looks in a random direction every few seconds)
+	- Waypoints for patrol state are randomized 
