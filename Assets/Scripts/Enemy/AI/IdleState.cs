@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IdleState : IEnemyStates
 {
-    private readonly EnemyStatePattern enemy;
+    private readonly BaseEnemy enemy;
     private Quaternion randomRotation;
     float lookTimer;
 
@@ -13,9 +13,9 @@ public class IdleState : IEnemyStates
         lookTimer = Random.Range(1.75f, 5);
     }
 
-    public IdleState(EnemyStatePattern enemyStatePattern) // Constructor
+    public IdleState(BaseEnemy baseEnemy) // Constructor
     {
-        enemy = enemyStatePattern;
+        enemy = baseEnemy;
     }
 
     public void UpdateState()

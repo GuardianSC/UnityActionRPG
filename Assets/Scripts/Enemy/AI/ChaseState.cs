@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ChaseState : IEnemyStates
 {
-    private readonly EnemyStatePattern enemy;
+    private readonly BaseEnemy enemy;
 
-    public ChaseState(EnemyStatePattern enemyController) // Constructor
+    public ChaseState(BaseEnemy baseEnemy) // Constructor
     {
-        enemy = enemyController;
+        enemy = baseEnemy;
     }
 
     public void UpdateState()

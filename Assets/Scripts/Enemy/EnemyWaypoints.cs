@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyWaypoints : MonoBehaviour
 {
-    EnemyStatePattern enemy;
+    BaseEnemy enemy;
     public Transform[] waypoints;
     public GameObject[] enemyPrefabs;
 
@@ -18,7 +18,7 @@ public class EnemyWaypoints : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        foreach (EnemyStatePattern enemy in enemy.enemyList)
+        foreach (BaseEnemy enemy in enemy.enemyList)
         {
             foreach(Transform waypoint in waypoints)
             {

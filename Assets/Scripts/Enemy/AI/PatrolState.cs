@@ -3,12 +3,12 @@ using System.Collections;
 
 public class PatrolState : IEnemyStates 
 {
-    private readonly EnemyStatePattern enemy;
+    private readonly BaseEnemy enemy;
     private int nextWaypoint;
 
-    public PatrolState(EnemyStatePattern enemyStatePattern) // Constructor
+    public PatrolState(BaseEnemy baseEnemy) // Constructor
     {
-        enemy = enemyStatePattern;
+        enemy = baseEnemy;
     }
 
     public void UpdateState()
@@ -52,7 +52,7 @@ public class PatrolState : IEnemyStates
 
     void Patrol()
     {
-        foreach (EnemyStatePattern enemy in enemy.enemyList)
+        foreach (BaseEnemy enemy in enemy.enemyList)
         {
             enemy.meshRendererFlag.material.color = Color.green;
             enemy.nma.destination = enemy.waypoints[nextWaypoint].position;

@@ -5,7 +5,7 @@ using UnityEngine;
 // Randomly spawns enemies in an area around it. There can be multiple in an area (all are controlled by an enemy spawner controller that determines when they are active, etc.)
 public class EnemySpawner : MonoBehaviour
 {
-    EnemyStatePattern enemy;
+    BaseEnemy enemy;
     public GameObject defaultEnemyPrefab;
     public int numberOfDefaultEnemyOnSpawn;
     public int maxNumberofDefaultEnemies;
@@ -31,10 +31,6 @@ public class EnemySpawner : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //foreach (GameObject spawnedEnemy in spawnedEnemyList)
-        //{
-        //    enemy.enemyList.Add(enemy);
-        //}
-		// Continually spawn enemies as long as their number is less than the max number of enemies allowed
+        
 	}
 }

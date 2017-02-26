@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EnemyStatePattern : MonoBehaviour
+public class BaseEnemy : MonoBehaviour
 {
     private Rigidbody rb;
     private CapsuleCollider cc;
@@ -19,7 +19,7 @@ public class EnemyStatePattern : MonoBehaviour
     [HideInInspector] public IdleState    idleState;
     [HideInInspector] public UnityEngine.AI.NavMeshAgent nma;
 
-    public List<EnemyStatePattern> enemyList = new List<EnemyStatePattern>();
+    //public List<BaseEnemy> enemyList = new List<BaseEnemy>();
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class EnemyStatePattern : MonoBehaviour
         cc = GetComponent<CapsuleCollider>();
         nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
         patrolState = new PatrolState(this);
-        chaseState = new  ChaseState(this);
+        chaseState  = new  ChaseState(this);
     }
 
 	// Use this for initialization
