@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-//[RequireComponent(typeof(RPGController))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
-    //RPGController controller;
+    Classes charClass;
+    public GameObject classPrefab = null;
+    public List<Classes> classes;
 
     public Rigidbody rb;
     public CapsuleCollider cc;
@@ -34,14 +36,14 @@ public class Player : MonoBehaviour
         nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         cc = GetComponent<CapsuleCollider>();
+        classes = new List<Classes>();
 
 #region Start Stats stuff
-
-        strength = Random.Range(5, 15);
+        strength = Random.Range(5, 15) + charClass.strengthBonus;
         Debug.Log("Strength: " + strength);
-        intelligence = Random.Range(5, 15);
+        intelligence = Random.Range(5, 15) + charClass.intelligenceBonus;
         Debug.Log("Intelligence: " + intelligence);
-        dexterity = Random.Range(5, 15);
+        dexterity = Random.Range(5, 15) + charClass.dexterityBonus;
         Debug.Log("Dexterity: " + dexterity);
 
         maxHealth = Random.Range(30, 55) + (int)Mathf.Round(strength * .33f);
@@ -51,7 +53,6 @@ public class Player : MonoBehaviour
         maxMana = Random.Range(30, 55) + (int)Mathf.Round(intelligence * .4f);
         mana = maxMana;
         Debug.Log("Mana/MaxMana = " + mana + "/" + maxMana);
-
 #endregion
     }
 

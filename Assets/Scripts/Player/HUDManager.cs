@@ -17,7 +17,7 @@ public class HUDManager : MonoBehaviour
     void Start ()
     {
         // Find the gameobject Player is attached to in order to access attributes (null reference exception occurs otherwise and not set in Unity Editor)
-        player = GameObject.Find("Player").GetComponent<Player>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         healthText.text = "HP/MaxHP: "     + player.health + "/"  + player.maxHealth;
         manaText.text   = "Mana/MaxMana: " + player.mana   + "/"  + player.maxMana;
 

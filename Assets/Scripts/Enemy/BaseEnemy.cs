@@ -19,7 +19,7 @@ public class BaseEnemy : MonoBehaviour
     [HideInInspector] public IdleState    idleState;
     [HideInInspector] public UnityEngine.AI.NavMeshAgent nma;
 
-    //public List<BaseEnemy> enemyList = new List<BaseEnemy>();
+    public List<BaseEnemy> enemyList = new List<BaseEnemy>();
 
     private void Awake()
     {

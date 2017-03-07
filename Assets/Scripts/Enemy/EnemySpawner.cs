@@ -12,7 +12,6 @@ public class EnemySpawner : MonoBehaviour
 
     public List<GameObject> spawnedEnemyList = new List<GameObject>();
 
-
     // Use this for initialization
     void Start ()
     {
