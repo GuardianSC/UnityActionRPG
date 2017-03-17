@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     Classes charClass;
-    public GameObject classPrefab = null;
+    public GameObject playerPrefab = null;
     public List<Classes> classes;
 
     public Rigidbody rb;
@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cc = GetComponent<CapsuleCollider>();
         classes = new List<Classes>();
+        playerPrefab = classes.classPrefab;
 
 #region Start Stats stuff
         strength = Random.Range(5, 15) + charClass.strengthBonus;

@@ -9,10 +9,12 @@ public class Mage : MonoBehaviour
 	void Start ()
     {
         player.classes.Add(new Classes()
-        { ClassName = "Mage",
+        {
+          ClassName = "Mage",
           classPrefab = GameObject.Find("MagePrefab"),
           strengthBonus = 1,
           intelligenceBonus = 5,
-          dexterityBonus = 1 });
+          dexterityBonus = 1
+        });
 	}
 }
