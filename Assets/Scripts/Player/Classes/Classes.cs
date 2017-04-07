@@ -6,7 +6,6 @@ public class Classes : MonoBehaviour
 {
     public string ClassName { get; set; }
     public GameObject classPrefab { get; set; }
-
     public int strengthBonus { get; set; }      // Attack damage, health
     public int intelligenceBonus { get; set; }  // Amount of mana
     public int dexterityBonus { get; set; }     // Attack rate

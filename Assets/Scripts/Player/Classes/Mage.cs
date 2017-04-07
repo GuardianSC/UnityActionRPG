@@ -16,5 +16,6 @@ public class Mage : MonoBehaviour
           intelligenceBonus = 5,
           dexterityBonus = 1
         });
+        player.classes.Sort();
 	}
 }

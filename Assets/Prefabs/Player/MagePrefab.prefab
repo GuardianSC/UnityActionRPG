@@ -109,8 +109,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e782b560dc9b149b46dce6b7641191, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  classPrefab: {fileID: 0}
-  classes: []
+  playerPrefab: {fileID: 0}
+  classes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   rb: {fileID: 0}
   cc: {fileID: 0}
   attackDistance: 20

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,20 +8,20 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     Classes charClass;
-    public GameObject playerPrefab = null;
+    //public GameObject playerPrefab = null;
     public List<Classes> classes;
 
     public Rigidbody rb;
     public CapsuleCollider cc;
 
-    private UnityEngine.AI.NavMeshAgent nma;
-    private Transform targetEnemy;
-    private bool enemyClicked;
-    private bool moving;
+    private NavMeshAgent nma;
+    private Transform    targetEnemy;
+    private bool         enemyClicked;
+    private bool         moving;
 
-    public float attackDistance = 20;
-    public float attackRate = .5f;
-    public float nextAttack;
+    //public float attackDistance = 20;
+    //public float attackRate = .5f;
+    //public float nextAttack;
 
 #region Stats stuff
     public int strength;       // Attack damage, health
@@ -33,12 +34,10 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
-        cc = GetComponent<CapsuleCollider>();
+        nma     = GetComponent<NavMeshAgent>();
+        rb      = GetComponent<Rigidbody>();
+        cc      = GetComponent<CapsuleCollider>();
         classes = new List<Classes>();
-        playerPrefab = classes.classPrefab;
-
 #region Start Stats stuff
         strength = Random.Range(5, 15) + charClass.strengthBonus;
         Debug.Log("Strength: " + strength);
@@ -60,11 +59,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Movement
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Input.GetButton("Fire1")) // Fire1 is left click on mouse
+        if (Input.GetButton("Fire1")) // Left mouse button
         {
-            if (Physics.Raycast(ray, out hit, 50)) // 50 should be at least the distance between camera and clicked surface (make a variable for that later?)
+            if (Physics.Raycast(ray, out hit, 50)) // 50 should be at least the distance between camera and clicked surface (make a variable for that later? For elevation changes)
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {

@@ -123,7 +123,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -13.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167453412
@@ -322,11 +322,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 223691592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61233b2d28f75834ba4061fa79f3954f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classMenu: {fileID: 0}
+  classText: {fileID: 0}
 --- !u!1 &337424699
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +339,7 @@ GameObject:
   - component: {fileID: 337424700}
   - component: {fileID: 337424702}
   - component: {fileID: 337424701}
+  - component: {fileID: 337424703}
   m_Layer: 5
   m_Name: ClassPanel
   m_TagString: Untagged
@@ -401,6 +404,21 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 337424699}
+--- !u!114 &337424703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 337424699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8f3975bdcda5c47909b008775df11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  classText: {fileID: 223691594}
+  mainMenuPanel: {fileID: 0}
+  classMenuPanel: {fileID: 0}
+  playButton: {fileID: 1188172718}
 --- !u!1 &514078625
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +516,7 @@ RectTransform:
   m_GameObject: {fileID: 571582916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9525768, y: 20.068182, z: 1.0000045}
+  m_LocalScale: {x: 1.9525768, y: 7.8705177, z: 1.0000045}
   m_Children:
   - {fileID: 1875339571}
   m_Father: {fileID: 337424700}
@@ -529,7 +547,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.18919878, g: 0.6691177, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -547,7 +565,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 571582919}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 571582921}
+        m_MethodName: SelectRogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &571582919
@@ -591,10 +620,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 571582916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce49266068d3bb6429db8d5b6aedcb16, type: 3}
+  m_Script: {fileID: 11500000, guid: bd8f3975bdcda5c47909b008775df11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOverRogue: 0
+  classText: {fileID: 223691594}
+  mainMenuPanel: {fileID: 0}
+  classMenuPanel: {fileID: 0}
+  playButton: {fileID: 1188172718}
 --- !u!1 &573809371
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,11 +747,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 606561934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80b529bca382d84baaad39b51a2a37e, type: 3}
+  m_Script: {fileID: 11500000, guid: bd8f3975bdcda5c47909b008775df11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classText: {fileID: 0}
   mainMenuPanel: {fileID: 514078625}
-  classMenuPanel: {fileID: 0}
+  classMenuPanel: {fileID: 337424699}
+  playButton: {fileID: 1188172718}
 --- !u!114 &606561937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +792,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 606561938}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 606561936}
+        m_MethodName: ChangeToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &606561938
@@ -821,7 +866,7 @@ RectTransform:
   m_GameObject: {fileID: 638317968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.952573, y: 20.068182, z: 1}
+  m_LocalScale: {x: 1.952573, y: 7.8705177, z: 1}
   m_Children:
   - {fileID: 167453411}
   m_Father: {fileID: 337424700}
@@ -852,7 +897,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -871,12 +916,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 638317968}
-        m_MethodName: 
+      - m_Target: {fileID: 638317973}
+        m_MethodName: SelectWarrior
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -925,10 +970,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 638317968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c6771c2e5d515c4c8fd7f0c56587a5c, type: 3}
+  m_Script: {fileID: 11500000, guid: bd8f3975bdcda5c47909b008775df11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOverWarrior: 0
+  classText: {fileID: 223691594}
+  mainMenuPanel: {fileID: 0}
+  classMenuPanel: {fileID: 0}
+  playButton: {fileID: 1188172718}
 --- !u!1 &671430793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,7 +1207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1188172719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1187,11 +1235,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1188172718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80b529bca382d84baaad39b51a2a37e, type: 3}
+  m_Script: {fileID: 11500000, guid: bd8f3975bdcda5c47909b008775df11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  classText: {fileID: 0}
   mainMenuPanel: {fileID: 0}
   classMenuPanel: {fileID: 0}
+  playButton: {fileID: 1188172718}
 --- !u!114 &1188172721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,7 +1280,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1188172722}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1188172720}
+        m_MethodName: LoadTestSceneOnSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1188172722
@@ -1574,7 +1635,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1394288299}
-        m_MethodName: LoadSceneOnSelect
+        m_MethodName: ChangeToClassMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1630,7 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80b529bca382d84baaad39b51a2a37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuPanel: {fileID: 0}
+  mainMenuPanel: {fileID: 514078625}
   classMenuPanel: {fileID: 337424699}
 --- !u!1 &1562467981
 GameObject:
@@ -1659,7 +1720,7 @@ RectTransform:
   m_GameObject: {fileID: 1562467981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9525768, y: 20.068182, z: 1.0000045}
+  m_LocalScale: {x: 1.9525768, y: 7.8705177, z: 1.0000045}
   m_Children:
   - {fileID: 2059996576}
   m_Father: {fileID: 337424700}
@@ -1690,7 +1751,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.8758621, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1708,7 +1769,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562467984}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1562467986}
+        m_MethodName: SelectMage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1562467984
@@ -1752,10 +1824,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1562467981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7274abcc61eed734c84fbfc78a8f69fd, type: 3}
+  m_Script: {fileID: 11500000, guid: bd8f3975bdcda5c47909b008775df11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOverMage: 0
+  classText: {fileID: 223691594}
+  mainMenuPanel: {fileID: 0}
+  classMenuPanel: {fileID: 0}
+  playButton: {fileID: 1188172718}
 --- !u!1 &1764828006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -13.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1875339572
@@ -2010,7 +2085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -13.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059996577
