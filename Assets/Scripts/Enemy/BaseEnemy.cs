@@ -7,9 +7,10 @@ public class BaseEnemy : MonoBehaviour
     private Rigidbody rb;
     private CapsuleCollider cc;
 
-    public float sightRange = 20f; // Length of raycast for seeing player
-    public Transform[] waypoints; // Used for patrol state
-    public Transform raycastOrigin; // Enemy
+    public float sightRange = 20f;        // Length of raycast for seeing player
+    public Transform[] waypoints;         // Used for patrol state
+    public GameObject waypointPrefab;     // Waypoint prefab
+    public Transform raycastOrigin;       // Enemy
     public MeshRenderer meshRendererFlag; // Debugging thing to show enemy state
 
     [HideInInspector] public Transform    chaseTarget; // Player
@@ -19,7 +20,7 @@ public class BaseEnemy : MonoBehaviour
     [HideInInspector] public IdleState    idleState;
     [HideInInspector] public UnityEngine.AI.NavMeshAgent nma;
 
-    //public List<BaseEnemy> enemyList = new List<BaseEnemy>();
+    public List<BaseEnemy> enemyList = new List<BaseEnemy>();
 
     private void Awake()
     {

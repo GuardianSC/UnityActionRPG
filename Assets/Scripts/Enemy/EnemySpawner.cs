@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
 
     public List<GameObject> spawnedEnemyList = new List<GameObject>();
 
+    //public Transform[] waypoints;
+    //
 
     // Use this for initialization
     void Start ()
@@ -25,6 +27,10 @@ public class EnemySpawner : MonoBehaviour
             GameObject clone = (GameObject)Instantiate(defaultEnemyPrefab, spawnPosition, spawnRotation);
             spawnedEnemyList.Add(clone);
             Debug.Log("Enemy added to enemy list!");
+
+            Vector3 waypointSpawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            Quaternion waypointSpawnRotation = Quaternion.Euler(0, 0, 0);
+            GameObject waypointClone = (GameObject)Instantiate(enemy.waypointPrefab, waypointSpawnPosition, waypointSpawnRotation);
         }
     }
 	
