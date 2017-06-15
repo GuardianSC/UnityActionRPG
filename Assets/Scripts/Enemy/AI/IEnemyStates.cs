@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface IEnemyStates
+namespace UnityActionRPG.AI
 {
-    void UpdateState();
+    public interface IEnemyStates
+    {
+        void UpdateState();
 
-    void OnTriggerEnter(Collider other);
+        void OnTriggerEnter(Collider other);
 
-    void ToPatrolState();
+        void ToPatrolState();
 
-    void ToChaseState();
+        void ToChaseState();
 
-    void ToIdleState();
+        void ToIdleState();
+    }
 }
