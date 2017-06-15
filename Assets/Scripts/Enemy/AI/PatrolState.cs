@@ -1,66 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PatrolState : IEnemyStates 
+namespace UnityActionRPG.AI
 {
-    private readonly BaseEnemy enemy;
-    private int nextWaypoint;
-
-    public PatrolState(BaseEnemy baseEnemy) // Constructor
+    public class PatrolState : IEnemyStates 
     {
-        enemy = baseEnemy;
-    }
+        private readonly BaseEnemy enemy;
+        private int nextWaypoint;
 
-    public void UpdateState()
-    {
-        Look();
-        Patrol();
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-            ToChaseState();
-    }
-
-    public void ToPatrolState()
-    {
-        Debug.Log("Cannot transition to current state (Patrol)");
-    }
-
-    public void ToChaseState()
-    {
-        //enemy.currentState = enemy.chaseState;
-    }
-
-    public void ToIdleState()
-    {
-        //enemy.currentState = enemy.idleState;
-    }
-
-    private void Look()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(enemy.raycastOrigin.transform.position, enemy.raycastOrigin.forward, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
+        public PatrolState(BaseEnemy baseEnemy) // Constructor
         {
-            enemy.chaseTarget = hit.transform; // Start chasing player if sighted
-            ToChaseState();
-
-            Debug.Log("Target Sighted");
+            enemy = baseEnemy;
         }
-    }
 
-    void Patrol()
-    {
-        foreach (BaseEnemy enemy in enemy.enemyList)
+        public void UpdateState()
         {
-            enemy.meshRendererFlag.material.color = Color.green;
-            enemy.nma.destination = enemy.waypoints[nextWaypoint].position;
-            enemy.nma.Resume();
+            Look();
+            Patrol();
+        }
 
-            if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+                ToChaseState();
+        }
+
+        public void ToPatrolState()
+        {
+            Debug.Log("Cannot transition to current state (Patrol)");
+        }
+
+        public void ToChaseState()
+        {
+            //enemy.currentState = enemy.chaseState;
+        }
+
+        public void ToIdleState()
+        {
+            //enemy.currentState = enemy.idleState;
+        }
+
+        private void Look()
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(enemy.raycastOrigin.transform.position, enemy.raycastOrigin.forward, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
             {
-                nextWaypoint = (nextWaypoint + 1) % enemy.waypoints.Length;
+                enemy.chaseTarget = hit.transform; // Start chasing player if sighted
+                ToChaseState();
+
+                Debug.Log("Target Sighted");
+            }
+        }
+
+        void Patrol()
+        {
+            foreach (BaseEnemy enemy in enemy.enemyList)
+            {
+                enemy.meshRendererFlag.material.color = Color.green;
+                enemy.nma.destination = enemy.waypoints[nextWaypoint].position;
+                enemy.nma.Resume();
+
+                if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
+                {
+                    nextWaypoint = (nextWaypoint + 1) % enemy.waypoints.Length;
+                }
             }
         }
     }

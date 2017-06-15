@@ -453,7 +453,7 @@ PlayerSettings:
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
   cloudServicesEnabled:
-    Collab: 1
+    Collab: 0
     UNet: 1
   cloudProjectId: 4b459415-4714-4b42-964c-e4667f3389dc
   projectName: DiabloLikeRPG
