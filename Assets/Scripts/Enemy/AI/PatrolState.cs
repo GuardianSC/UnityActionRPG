@@ -5,7 +5,10 @@ namespace UnityActionRPG.AI
 {
     public class PatrolState : IEnemyStates 
     {
-        private readonly BaseEnemy enemy;
+        private readonly BaseEnemy enemy; // Don't change any data in BaseEnemy, just use things from it
+        public Transform[] waypoints;         // Used for patrol state
+        int maxWaypoints;
+        public GameObject waypointPrefab;     // Waypoint prefab
         private int nextWaypoint;
 
         public PatrolState(BaseEnemy baseEnemy) // Constructor
@@ -57,13 +60,24 @@ namespace UnityActionRPG.AI
             foreach (BaseEnemy enemy in enemy.enemyList)
             {
                 enemy.meshRendererFlag.material.color = Color.green;
-                enemy.nma.destination = enemy.waypoints[nextWaypoint].position;
+                enemy.nma.destination = waypoints[nextWaypoint].position;
                 enemy.nma.Resume();
+
+                for (int i = 0; i <= maxWaypoints; i++)
+                {
+                    Vector3 spawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, enemy.transform.position.z + Random.Range(-10, 10));
+                    waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
+                    GameObject clone = (GameObject)Instantiate(waypointPrefab, waypoints[i].position, Quaternion.Euler(0, 0, 0));
+                }
+                
+                
 
                 if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
                 {
-                    nextWaypoint = (nextWaypoint + 1) % enemy.waypoints.Length;
+                    nextWaypoint = (nextWaypoint + 1) % waypoints.Length;
                 }
+
+
             }
         }
     }

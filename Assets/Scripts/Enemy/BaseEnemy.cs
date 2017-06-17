@@ -10,17 +10,17 @@ namespace UnityActionRPG.AI
         private CapsuleCollider cc;
 
         public float sightRange = 20f;        // Length of raycast for seeing player
-        public Transform[] waypoints;         // Used for patrol state
-        public GameObject waypointPrefab;     // Waypoint prefab
+        //public Transform[] waypoints;       // Used for patrol state
+        //public GameObject waypointPrefab;   // Waypoint prefab
         public Transform raycastOrigin;       // Enemy
-        public MeshRenderer meshRendererFlag; // Debugging thing to show enemy state
+        public MeshRenderer meshRendererFlag; // Indicator to show an enemy's state
 
         [HideInInspector] public Transform    chaseTarget; // Player
-        [HideInInspector] public UnityActionRPG.AI.IEnemyStates currentState;
+        [HideInInspector] public IEnemyStates currentState;
         [HideInInspector] public PatrolState  patrolState;
-        [HideInInspector] public UnityActionRPG.AI.ChaseState   chaseState;
-        [HideInInspector] public UnityActionRPG.AI.IdleState    idleState;
-        [HideInInspector] public UnityEngine.AI.NavMeshAgent    nma;
+        [HideInInspector] public ChaseState   chaseState;
+        [HideInInspector] public IdleState    idleState;
+        [HideInInspector] public UnityEngine.AI.NavMeshAgent nma;
 
         public List<BaseEnemy> enemyList = new List<BaseEnemy>();
 
@@ -30,7 +30,7 @@ namespace UnityActionRPG.AI
             cc = GetComponent<CapsuleCollider>();
             nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
             patrolState = new PatrolState(this);
-            chaseState  = new UnityActionRPG.AI.ChaseState(this);
+            chaseState  = new ChaseState(this);
         }
 
 	    // Use this for initialization
@@ -53,10 +53,10 @@ namespace UnityActionRPG.AI
         //public void RandomizeWaypoints()
         //{
         //    Vector3 randomVector = new Vector3(raycastOrigin.position.x + Random.Range(-5, 5), 0, raycastOrigin.position.z + Random.Range(-5, 5));
-        
+
         //    for (int i = 0; i > 0; i++)
         //    {
-            
+
         //    }
         //}
     }
