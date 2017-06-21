@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace UnityActionRPG.AI
 {
@@ -63,11 +64,13 @@ namespace UnityActionRPG.AI
                 enemy.nma.destination = waypoints[nextWaypoint].position;
                 enemy.nma.Resume();
 
+                maxWaypoints = Random.Range(2, 5);
+
                 for (int i = 0; i <= maxWaypoints; i++)
                 {
                     Vector3 spawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, enemy.transform.position.z + Random.Range(-10, 10));
                     waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
-                    GameObject clone = (GameObject)Instantiate(waypointPrefab, waypoints[i].position, Quaternion.Euler(0, 0, 0));
+                    GameObject clone = MonoBehaviour.Instantiate(waypointPrefab, waypoints[i].position, Quaternion.Euler(0, 0, 0));
                 }
                 
                 

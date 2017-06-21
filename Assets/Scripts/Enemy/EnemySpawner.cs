@@ -8,7 +8,7 @@ namespace UnityActionRPG.AI
     public class EnemySpawner : MonoBehaviour
     {
         BaseEnemy enemy;
-        public GameObject defaultEnemyPrefab;
+        public BaseEnemy defaultEnemyPrefab;
         public int numberOfDefaultEnemyOnSpawn;
         public int maxNumberofDefaultEnemies;
 
@@ -24,14 +24,15 @@ namespace UnityActionRPG.AI
             {
                 Vector3 spawnPosition = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
                 Quaternion spawnRotation = Quaternion.Euler(0, Random.Range(0, 180), 0);
-            
-                GameObject clone = (GameObject)Instantiate(defaultEnemyPrefab, spawnPosition, spawnRotation);
-                spawnedEnemyList.Add(clone);
+
+                BaseEnemy clone = Instantiate(defaultEnemyPrefab, spawnPosition, spawnRotation);
+                //spawnedEnemyList.Add(clone);
+                enemy.enemyList.Add(clone);
                 Debug.Log("Enemy added to enemy list!");
 
-                Vector3 waypointSpawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, Random.Range(-10, 10)); // Error null reference exception
-                Quaternion waypointSpawnRotation = Quaternion.Euler(0, 0, 0);
-                GameObject waypointClone = (GameObject)Instantiate(enemy.waypointPrefab, waypointSpawnPosition, waypointSpawnRotation);
+                //Vector3 waypointSpawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, Random.Range(-10, 10)); // Error null reference exception
+                //Quaternion waypointSpawnRotation = Quaternion.Euler(0, 0, 0);
+                //GameObject waypointClone = (GameObject)Instantiate(enemy. waypointPrefab, waypointSpawnPosition, waypointSpawnRotation);
             }
         }
 	
