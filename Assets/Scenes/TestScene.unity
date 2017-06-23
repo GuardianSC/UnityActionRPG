@@ -669,7 +669,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 7
   m_Type: 1
-  m_Color: {r: 0.24191624, g: 0.2400519, b: 0.29411763, a: 1}
+  m_Color: {r: 0.03125558, g: 0.031014705, b: 0.038, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1847,11 +1847,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e0a791c00162844ad950f3b7fc5c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultEnemyPrefab: {fileID: 1173550306941160, guid: 4eb933daf77f04a458af2f070a3e9552,
+  defaultEnemyPrefab: {fileID: 114675472062712934, guid: 4eb933daf77f04a458af2f070a3e9552,
     type: 2}
   numberOfDefaultEnemyOnSpawn: 2
-  maxNumberofDefaultEnemies: 2
-  spawnedEnemyList: []
+  maxNumberofDefaultEnemies: 5
+  spawnTimer: 0
 --- !u!4 &1700831854
 Transform:
   m_ObjectHideFlags: 0

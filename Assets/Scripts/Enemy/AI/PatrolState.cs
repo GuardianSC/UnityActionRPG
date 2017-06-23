@@ -16,6 +16,7 @@ namespace UnityActionRPG.AI
         {
             waypointPrefab = GameObject.Find("Waypoint");
         }
+
         public PatrolState(BaseEnemy baseEnemy) // Constructor
         {
             enemy = baseEnemy;
