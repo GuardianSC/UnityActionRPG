@@ -11,7 +11,11 @@ namespace UnityActionRPG.AI
         int maxWaypoints;
         public GameObject waypointPrefab;     // Waypoint prefab
         private int nextWaypoint;
-
+        
+        private void Start()
+        {
+            waypointPrefab = GameObject.Find("Waypoint");
+        }
         public PatrolState(BaseEnemy baseEnemy) // Constructor
         {
             enemy = baseEnemy;
@@ -55,32 +59,24 @@ namespace UnityActionRPG.AI
                 Debug.Log("Target Sighted");
             }
         }
-
+         // Spawn waypoints and travel between them
         void Patrol()
         {
-            foreach (BaseEnemy enemy in enemy.enemyList)
+            maxWaypoints = Random.Range(2, 5);
+            for (int i = 0; i <= maxWaypoints; i++)
             {
-                enemy.meshRendererFlag.material.color = Color.green;
-                enemy.nma.destination = waypoints[nextWaypoint].position;
-                enemy.nma.Resume();
-
-                maxWaypoints = Random.Range(2, 5);
-
-                for (int i = 0; i <= maxWaypoints; i++)
-                {
-                    Vector3 spawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, enemy.transform.position.z + Random.Range(-10, 10));
-                    waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
-                    GameObject clone = MonoBehaviour.Instantiate(waypointPrefab, waypoints[i].position, Quaternion.Euler(0, 0, 0));
-                }
-                
-                
-
-                if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
-                {
-                    nextWaypoint = (nextWaypoint + 1) % waypoints.Length;
-                }
-
-
+                Vector3 spawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, enemy.transform.position.z + Random.Range(-10, 10));
+                waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
+                GameObject clone = MonoBehaviour.Instantiate(waypointPrefab, waypoints[i].position, Quaternion.Euler(0, 0, 0));
+            }
+            
+            enemy.meshRendererFlag.material.color = Color.green;
+            enemy.nma.destination = waypoints[nextWaypoint].position;
+            enemy.nma.Resume();    
+            
+            if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
+            {
+                nextWaypoint = (nextWaypoint + 1) % waypoints.Length;
             }
         }
     }
