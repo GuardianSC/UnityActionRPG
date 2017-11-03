@@ -7,15 +7,11 @@ namespace UnityActionRPG.AI
     public class PatrolState : IEnemyStates 
     {
         private readonly BaseEnemy enemy; // Don't change any data in BaseEnemy, just use things from it
-        public Transform[] waypoints;         // Used for patrol state
+        //public Transform waypoint;         // Used to move
         int maxWaypoints;
-        public GameObject waypointPrefab;     // Waypoint prefab
-        private int nextWaypoint;
-        
-        private void Start()
-        {
-            waypointPrefab = GameObject.Find("Waypoint");
-        }
+        //public GameObject waypointPrefab;     // Waypoint prefab
+        //private int nextWaypoint;
+
         public PatrolState(BaseEnemy baseEnemy) // Constructor
         {
             enemy = baseEnemy;
@@ -62,21 +58,26 @@ namespace UnityActionRPG.AI
          // Spawn waypoints and travel between them
         void Patrol()
         {
-            maxWaypoints = Random.Range(2, 5);
-            for (int i = 0; i <= maxWaypoints; i++)
+            maxWaypoints = 1;
+            for (int i = 1; i <= maxWaypoints; i++)
             {
+                //Vector3 spawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, enemy.transform.position.z + Random.Range(-10, 10));
+                //enemy.waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
+                //GameObject clone = MonoBehaviour.Instantiate(enemy.waypointPrefab, enemy.waypoints[i].position, Quaternion.Euler(0, 0, 0));
+
                 Vector3 spawnPosition = new Vector3(enemy.transform.position.x + Random.Range(-10, 10), 0, enemy.transform.position.z + Random.Range(-10, 10));
-                waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
-                GameObject clone = MonoBehaviour.Instantiate(waypointPrefab, waypoints[i].position, Quaternion.Euler(0, 0, 0));
-            }
-            
-            enemy.meshRendererFlag.material.color = Color.green;
-            enemy.nma.destination = waypoints[nextWaypoint].position;
-            enemy.nma.Resume();    
-            
-            if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
-            {
-                nextWaypoint = (nextWaypoint + 1) % waypoints.Length;
+                enemy.waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.transform.position.z + Random.Range(-5, 5));
+                GameObject clone = MonoBehaviour.Instantiate(enemy.waypointPrefab, enemy.waypoints[i].position, Quaternion.Euler(0, 0, 0));
+
+                enemy.meshRendererFlag.material.color = Color.green;
+                //enemy.nma.destination = waypoints[nextWaypoint].position;
+                enemy.nma.Resume();
+
+                if (enemy.nma.remainingDistance <= enemy.nma.stoppingDistance && !enemy.nma.pathPending)
+                {
+                    //nextWaypoint = (nextWaypoint + 1) % waypoints.Length;
+                    enemy.waypoints[i].position = new Vector3(enemy.transform.position.x + Random.Range(-5, 5), 0, enemy.waypoints[i].position.z + Random.Range(-5, 5)); // Move the waypoint to another position
+                }
             }
         }
     }

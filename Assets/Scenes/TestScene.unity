@@ -1847,11 +1847,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e0a791c00162844ad950f3b7fc5c21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultEnemyPrefab: {fileID: 1173550306941160, guid: 4eb933daf77f04a458af2f070a3e9552,
+  defaultEnemyPrefab: {fileID: 114675472062712934, guid: 4eb933daf77f04a458af2f070a3e9552,
     type: 2}
-  numberOfDefaultEnemyOnSpawn: 2
-  maxNumberofDefaultEnemies: 2
-  spawnedEnemyList: []
+  numberOfDefaultEnemyOnSpawn: 1
+  maxNumberofDefaultEnemies: 1
+  spawnTimer: 0
 --- !u!4 &1700831854
 Transform:
   m_ObjectHideFlags: 0
@@ -1951,6 +1951,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114675472062712934, guid: 4eb933daf77f04a458af2f070a3e9552,
+        type: 2}
+      propertyPath: waypoint
+      value: 
+      objectReference: {fileID: 4269121670207844, guid: 64f3b7cc881dff74a829c8e940973cf2,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4eb933daf77f04a458af2f070a3e9552, type: 2}
   m_IsPrefabParent: 0

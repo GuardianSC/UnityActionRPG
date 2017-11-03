@@ -165,9 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 20
   waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4269121670207844, guid: 64f3b7cc881dff74a829c8e940973cf2, type: 2}
+  waypointPrefab: {fileID: 1794935208951686, guid: 64f3b7cc881dff74a829c8e940973cf2,
+    type: 2}
   raycastOrigin: {fileID: 4274435655416580}
   meshRendererFlag: {fileID: 23645558895801180}
   chaseTarget: {fileID: 0}

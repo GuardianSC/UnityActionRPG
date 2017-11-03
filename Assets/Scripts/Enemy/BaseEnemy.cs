@@ -10,8 +10,8 @@ namespace UnityActionRPG.AI
         private CapsuleCollider cc;
 
         public float sightRange = 20f;        // Length of raycast for seeing player
-        //public Transform[] waypoints;       // Used for patrol state
-        //public GameObject waypointPrefab;   // Waypoint prefab
+        public Transform[] waypoints;       // Used for patrol state
+        public GameObject waypointPrefab;   // Waypoint prefab
         public Transform raycastOrigin;       // Enemy
         public MeshRenderer meshRendererFlag; // Indicator to show an enemy's state
 
@@ -22,7 +22,7 @@ namespace UnityActionRPG.AI
         [HideInInspector] public IdleState    idleState;
         [HideInInspector] public UnityEngine.AI.NavMeshAgent nma;
 
-        public List<BaseEnemy> enemyList = new List<BaseEnemy>();
+        //public List<BaseEnemy> enemyList = new List<BaseEnemy>();
 
         private void Awake()
         {
