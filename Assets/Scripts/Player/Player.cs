@@ -3,14 +3,9 @@ using System.Collections;
 
 namespace UnityActionRPG.ThePlayer
 {
-    //[RequireComponent(typeof(RPGController))]
-    [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
     public class Player : MonoBehaviour
     {
-        //RPGController controller;
-
-        public Rigidbody rb;
         public CapsuleCollider cc;
 
         private UnityEngine.AI.NavMeshAgent nma;
@@ -34,7 +29,6 @@ namespace UnityActionRPG.ThePlayer
         void Start ()
         {
             nma = GetComponent<UnityEngine.AI.NavMeshAgent>();
-            rb = GetComponent<Rigidbody>();
             cc = GetComponent<CapsuleCollider>();
 
     #region Start Stats stuff
